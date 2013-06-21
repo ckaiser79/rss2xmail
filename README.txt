@@ -1,0 +1,1 @@
+http://css-tricks.com/sending-nice-html-email-with-php/
