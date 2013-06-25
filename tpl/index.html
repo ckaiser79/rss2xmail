@@ -1,18 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Bootstrap 101 Template</title>
+	<title>RSS 2 Email</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Bootstrap -->
 	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+	<link href="css/default-style.css" rel="stylesheet" media="screen">
 </head>
 <body>
-	<h1>Hello, world!</h1>
+	<h1>RSS 2 Email!</h1>
+
+
+	<div id="messages">
+		<ul>
+			<li class="info">
+				Email sucessfull sent to preview@..alhost 
+			</li>
+		</ul>
+	</div>
 	
-	[onshow.page.message]
-	<br>
-	[onshow.other_message]
+	<form id="rssfeed" method="post" action="">
+		<input type="hidden" name="todo" value="select_newsletter">
+		<select>
+			<option value="http://neheim.dlrg.de/feed_for/newsletter.php">Newsletter Neheim</option>
+			<option value="http://meschede.dlrg.de/feed_for/newsletter.php">Newsletter Meschede</option>
+		</select>
+	</form>
 	
+	<form id="newsletter" method="post" action="">
+		<input type="hidden" name="todo" value="send_email">
+		<div>
+			<h2>Prefix Text</h2>
+			<textarea class="huge"></textarea>
+			
+		</div>
+		<div>
+			<h2>Latest News</h2>
+			<div class="rss-item">
+				<label for="">Include: Any News</label>
+				<input type="checkbox" value="" id="">
+				<p>Lore IpsuLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore Ipsumm</p>
+			</div>
+			<div class="rss-item">
+				<input type="checkbox" value="">
+				<label>Include: Any News</label>
+				<br>
+				<p>Lore IpsuLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore Ipsumm</p>
+			</div>
+			<div class="rss-item">
+				<input type="checkbox" value="">
+				<label>Include: Any News</label>
+				<br>
+				<p>LLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore Ipsumore Ipsum</p>
+			</div>
+			<div class="form-footer">
+				<ul>
+					<li>
+						<input type="radio" name="recipient" checked value="preview@localhost"> preview@localhost
+					</li>
+					<li>
+						<input type="radio" name="recipient" value="mailinglist@localhost"> mailinglist@localhost
+					</li>
+				</ul>
+
+				<button type="submit">Send</button>
+				
+			</div>
+	</form>
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 </body>
