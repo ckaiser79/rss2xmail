@@ -2,8 +2,6 @@
 
 require_once('config.php');
 
-$other_message = "foobar";
-
 $r = new PageRenderSupport();
 $r->render();
 

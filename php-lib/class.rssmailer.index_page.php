@@ -2,14 +2,13 @@
 
 class IndexPage {
 
-	public $message;
-	
+	public $template;
+
 	public function run($templateEngine = null) {
-		$this->message = "Hello Class World";
+		$this->feeds = Config::$feeds;
+		$this->recipients = Config::$recipients;
 	}
 
 }
-
-$page = new IndexPage();
 
 ?>
