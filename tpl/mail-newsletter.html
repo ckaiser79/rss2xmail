@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Newsletter</title>
+</head>
+<body>
+	<p>
+		{$prefixText}
+	</p>
+
+	{loop="feedItems"}
+		{$value.title}<br>
+		<div>{$value.description}</div>
+		<a href="{$value.link}">... online lesen</a>
+	{/loop}
+
+	<p>Abbestellen unter ...</a>
+	
+</body>
+</html>

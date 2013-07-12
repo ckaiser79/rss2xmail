@@ -14,61 +14,51 @@
 
 	<div id="messages">
 		<ul>
-			<li class="info">
-				Email sucessfull sent to preview@..alhost 
-			</li>
+			{loop="page.messages"}
+			<li class="{$value.type}">{$value.text}</li>
+			{/loop}
 		</ul>
 	</div>
 	
 	<form id="rssfeed" method="post" action="">
-		<input type="hidden" name="todo" value="select_newsletter">
-		<select>
-			<option value="http://neheim.dlrg.de/feed_for/newsletter.php">Newsletter Neheim</option>
-			<option value="http://meschede.dlrg.de/feed_for/newsletter.php">Newsletter Meschede</option>
+		<select name="selected_feed" id="selected_feed">
+			{loop="page.feeds"}
+			<option value="{$value.url}">{$value.title}</option>
+			{/loop}
 		</select>
+		<button type="button">Load Feed data</button>
 	</form>
 	
 	<form id="newsletter" method="post" action="">
-		<input type="hidden" name="todo" value="send_email">
+		<input type="hidden" name="todo" value="SendEmail">
+		<input class="paramBase64JsonFeedItems" type="hidden" name="serializedFeedItems" value="">
 		<div>
 			<h2>Prefix Text</h2>
-			<textarea class="huge"></textarea>
+			<textarea name="prefix" class="huge"></textarea>
 			
 		</div>
-		<div>
-			<h2>Latest News</h2>
-			<div class="rss-item">
-				<label for="">Include: Any News</label>
-				<input type="checkbox" value="" id="">
-				<p>Lore IpsuLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore Ipsumm</p>
-			</div>
-			<div class="rss-item">
-				<input type="checkbox" value="">
-				<label>Include: Any News</label>
-				<br>
-				<p>Lore IpsuLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore Ipsumm</p>
-			</div>
-			<div class="rss-item">
-				<input type="checkbox" value="">
-				<label>Include: Any News</label>
-				<br>
-				<p>LLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore IpsumLore Ipsumore Ipsum</p>
-			</div>
-			<div class="form-footer">
-				<ul>
-					<li>
-						<input type="radio" name="recipient" checked value="preview@localhost"> preview@localhost
-					</li>
-					<li>
-						<input type="radio" name="recipient" value="mailinglist@localhost"> mailinglist@localhost
-					</li>
-				</ul>
+		<h2>Latest News</h2>
+		<div id="rssitems">
 
-				<button type="submit">Send</button>
+		</div>
+
+		<div class="form-footer">
+			{loop="page.recipients"}
+			<label for="recipient_{$counter}">
+				<input type="radio" name="recipient" id="recipient_{$counter}" value="{$value}"> 
+				{$value}
+			</label>
+			{/loop}
+			<button class="buttonSendEmail" type="submit">Send newsletter to mailrecipient</button>
 				
-			</div>
+		</div>
 	</form>
-	<script src="http://code.jquery.com/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/rss-printer.js"></script>
+<script src="js/base64.js"></script>
+<script src="js/gui-index.js"></script>
+</script>
 </body>
 </html>
