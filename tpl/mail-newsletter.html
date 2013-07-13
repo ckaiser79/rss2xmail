@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Newsletter</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
 	<p>
@@ -9,9 +9,9 @@
 	</p>
 
 	{loop="feedItems"}
-		{$value.title}<br>
+		<div style="font-size: large;">{$value.title}</div>
 		<div>{$value.description}</div>
-		<a href="{$value.link}">... online lesen</a>
+		<a href="{$value.link}">online lesen ...</a>
 	{/loop}
 
 	<p>Abbestellen unter ...</a>

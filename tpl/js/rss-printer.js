@@ -4,37 +4,25 @@ function RssPrinter() {
 	// OOP approach following http://mikewest.org/2005/03/component-encapsulation-using-object-oriented-javascript
 	var self = this; 
 
-	var _data = undefined;	
-	var onItemReceived = undefined;
-
-	self._defaultValues = function() {
-
-	}
+	var onItemsReceived = undefined;
+	
 
 	self.loadFeed = function(feedUrl) {
-		
-		// some mocked data
-		self._data = [
-			{ 
-				title: 'Foo 1',
-				link: 'http://foo1',
-				description: '<p><a href="mailto:me@inter.net">FOO1</a></p>'+'<p><a href="mailto:me@inter.net">FOO1</a></p>'+'<p><a href="mailto:me@inter.net">FOO1</a></p>'+'<p><a href="mailto:me@inter.net">FOO1</a></p>'+'<p><a href="mailto:me@inter.net">FOO1</a></p>',
-				index: 0,
-			},
-			{ 
-				title: 'Foo 2',
-				link: 'http://foo2',
-				description: '<p><a href="mailto:me@inter.net">FOO2</a></p> '+'<p><a href="mailto:me@inter.net">FOO2</a></p> '+'<p><a href="mailto:me@inter.net">FOO2</a></p> '+'<p><a href="mailto:me@inter.net">FOO2</a></p> ',
-				index: 1,
-			}
-		];
-		
-		if(self.onItemReceived == undefined) { throw "Undefined Target!"; }
-		if(self._data == undefined) { return; }
 	
-		for(i = 0; i < self._data.length; i++) {
-			self.onItemReceived(self._data[i]);
-		}
+		if(self.onItemsReceived == undefined) { throw "Undefined Target!"; }
+		var feed = new google.feeds.Feed(feedUrl);
+		
+		feed.load(function(result) {
+			if (!result.error) {
+				var feed = result.feed;
+				LOG.info('received ' + feed.entries.length + ' rss items.');
+				self.onItemsReceived(feed);
+			}
+			else {
+				$('.messages ul').append('<li class="error">Unable to get RSS Feed ' + feedUrl + '</li>')
+				self._data = [];
+			}
+		});
 	};
 
 };

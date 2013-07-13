@@ -29,19 +29,21 @@ class SendEmailPage {
 		$mtpl->assign('feedItems', (array) $this->selectedFeedItems);
 
 		$mergedTemplate = $mtpl->draw(Config::$mailBody, TRUE);
-		return $mergedTemplate;
+		return utf8_encode($mergedTemplate);
 	}
 
 	private function sendEmails($mailBody) {
 
 		$mail = new PHPMailer();
+		$mail->CharSet = 'UTF-8';
 
 		$mail->SetFrom(Config::$mailFromEmail, Config::$mailFromLabel);
 		$mail->AddAddress(HttpParam::asString('recipient'));
 
 		$mail->Subject = Config::$mailDefaultSubject;
 		$mail->MsgHTML($mailBody);
-		//$mail->AltBody = new html2text($mailBody)->get_text();
+		$html2text = new html2text($mailBody);
+		$mail->AltBody = $html2text->get_text();
 
 		if(!$mail->Send()) {
 			array_push($this->messages, (array) new Message('Error sending email: ' . $mail->ErrorInfo, 'error'));

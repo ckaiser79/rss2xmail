@@ -1,10 +1,31 @@
 
+body { margin: 10px; }
+
 #messages .info { color: #228B22; }
 #messages .error { color: #AA0000; }
 
-#rssfeed { border: solid 1px; margin: 20px; padding: 6px; }
-#newsletter { border: solid 1px; margin: 20px; padding: 6px; }
+textarea.huge { width: 380px; height: 300px;  }
 
-.rss-item { border-bottom: solid 1px; width: 400px;  }
+#rssitems .title { font-size: large; }
+#rssitems label { display: inline; }
+#rssitems .content { display: none; }
+#rssitems .link { margin-left: 4px; margin-right: 3px; }
+#content {
+	min-height: 100%;
+	position: relative;
+	overflow: auto;
+	z-index: 0; 
+}
 
-textarea.huge { width: 400px; height: 160px;  }
+#header { }
+
+#leftpanel {
+	display: block;
+	float: left; 
+	width: 400px;
+}
+
+#center {
+	display: block;
+	width: auto; 
+}
