@@ -29,7 +29,8 @@ class SendEmailPage {
 		$mtpl->assign('feedItems', (array) $this->selectedFeedItems);
 
 		$mergedTemplate = $mtpl->draw(Config::$mailBody, TRUE);
-		return utf8_encode($mergedTemplate);
+		return $mergedTemplate;
+		//return utf8_encode($mergedTemplate);
 	}
 
 	private function sendEmails($mailBody) {
