@@ -2,6 +2,7 @@ var rssPrinter = new RssPrinter();
 var items = [];
 
 $(document).ready(function() {
+
 	rssPrinter.onItemsReceived = function(feed) {
 		$('#rssitems').html('');
 		items = [];

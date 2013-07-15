@@ -17,12 +17,10 @@ class Config {
 	public static $mailBody = 'mail-newsletter';
 }
 
-// CONFURATION ENDS HERE
-
-error_reporting(E_ALL | E_STRICT);
-
 define('LIB', 'php-lib');
 define('TPL', 'tpl');
+
+require_once('config-local.php');
 
 function fatal() {
 	$args = func_get_args();
@@ -30,7 +28,6 @@ function fatal() {
 	die;
 }
 
-require_once('config-local.php');
 
 // global lib definitions
 require_once(LIB.'/class.rssmailer.page_render_support.php');
