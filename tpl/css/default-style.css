@@ -17,6 +17,9 @@ textarea.huge { width: 380px; height: 300px;  }
 	z-index: 0; 
 }
 
+#numFeedEntries { width: 20px; }
+
+
 #header { }
 
 #leftpanel {

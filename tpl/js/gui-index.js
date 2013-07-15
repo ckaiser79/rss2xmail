@@ -42,6 +42,8 @@ $(document).ready(function() {
 	});
 
 	$('.buttonLoadFeed').click(function() { 
+		var numEntries = $('#numFeedEntries').val();
+		rssPrinter.setNumEntries = numEntries;
 		rssPrinter.loadFeed($('#selected_feed').val()); 
 	});
 });

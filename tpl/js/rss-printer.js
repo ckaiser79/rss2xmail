@@ -5,13 +5,14 @@ function RssPrinter() {
 	var self = this; 
 
 	var onItemsReceived = undefined;
-	
+	var setNumEntries = 6;	
 
 	self.loadFeed = function(feedUrl) {
 	
 		if(self.onItemsReceived == undefined) { throw "Undefined Target!"; }
 		var feed = new google.feeds.Feed(feedUrl);
-		
+		feed.setNumEntries(self.setNumEntries);
+
 		feed.load(function(result) {
 			if (!result.error) {
 				var feed = result.feed;
