@@ -26,21 +26,29 @@
 		</ul>
 	</div>
 	
-	<div id="leftpanel">
-		<form id="rssfeed" method="post" action="">
-			<select name="selected_feed" id="selected_feed">
-				{loop="page.feeds"}
-				<option value="{$value.url}">{$value.title}</option>
-				{/loop}
-			</select>
-			<button class="buttonLoadFeed" type="button">Load Feed data</button>
-		</form>
-	
+	<div>
 		<form id="newsletter" method="post" action="">
 			<input type="hidden" name="todo" value="SendEmail">
 			<input class="paramBase64JsonFeedItems" type="hidden" name="serializedFeedItems" value="">
 
-			<div class="form-footer">
+			<section>
+				<h3>Prefix Text:</h3>
+				<textarea name="prefix" rows="40" cols="60" id="prefix"></textarea>
+				<p>HTML code is accepted.</p>
+			</section>
+			<section>
+				<h3>Include news feed:</h3>
+				<select name="selected_feed" id="selected_feed">
+					{loop="page.feeds"}
+					<option value="{$value.url}">{$value.title}</option>
+					{/loop}
+				</select>
+				<button class="buttonLoadFeed" type="button">Load Feed data</button>
+				<div id="rssitems"></div>
+			</section>
+
+			<section class="form-footer">
+				<h3>Set recipient:</h3>
 
 				<input name="recipient" id="recipient" list="recipient_proposals" />
 				<datalist id="recipient_proposals">
@@ -51,26 +59,12 @@
 				
 				<button class="buttonSendEmail" type="submit">Send newsletter to mailrecipient</button>
 				
-			</div>
+			</section>
 
-			<div>
-				<h2>Prefix Text</h2>
-				<textarea name="prefix" rows="40" cols="60" id="prefix"></textarea>
-				<p>HTML code is accepted.</p>
-			
-			</div>
 
 		</form>
 	</div>
 
-	<div id="center">
-		<div class="content">
-		<h2>Latest News</h2>
-			<div id="rssitems">
-
-			</div>
-                </div>
-	</div>
 
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript">
