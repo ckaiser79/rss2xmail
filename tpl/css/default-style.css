@@ -14,11 +14,10 @@ textarea.huge { width: 380px; height: 300px;  }
 	min-height: 100%;
 	position: relative;
 	overflow: auto;
-	z-index: 0; 
 }
 
-#numFeedEntries { width: 20px; }
-
+/*#numFeedEntries { width: 100px; }*/
+#prefix { width: 90%; height: 100px; margin: 10px; }
 
 #header { }
 

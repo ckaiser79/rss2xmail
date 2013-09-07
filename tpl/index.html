@@ -10,10 +10,16 @@
 	<link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
 	<link href="css/default-style.css" rel="stylesheet" media="screen">
 
-	<link rel="stylesheet" type="text/css" href="markitup/skins/markitup/style.css" />
-	<link rel="stylesheet" type="text/css" href="markitup/sets/default/style.css" />
+	
 </head>
 <body>
+
+	<section>
+		<h3>Prefix Text:</h3>
+		<textarea name="prefix" rows="40" cols="60" class="ckeditor" id="prefix"></textarea>
+		<p>HTML code is accepted.</p>
+	</section>
+
 	<div id="header">
 		     <h1>RSS feed to email</h1>
 	</div>
@@ -31,11 +37,7 @@
 			<input type="hidden" name="todo" value="SendEmail">
 			<input class="paramBase64JsonFeedItems" type="hidden" name="serializedFeedItems" value="">
 
-			<section>
-				<h3>Prefix Text:</h3>
-				<textarea name="prefix" rows="40" cols="60" id="prefix"></textarea>
-				<p>HTML code is accepted.</p>
-			</section>
+			
 			<section>
 				<h3>Include news feed:</h3>
 				<select name="selected_feed" id="selected_feed">
@@ -79,18 +81,21 @@
 <script src="js/rss-printer.js" type="text/javascript" ></script>
 <script src="js/base64.js" type="text/javascript" ></script>
 
-<!-- simple html editor -->
-<script type="text/javascript" src="markitup/jquery.markitup.js"></script>
-<script type="text/javascript" src="markitup/sets/default/set.js"></script>
+<!-- html editor 
+<script src="ckeditor/ckeditor.js"></script>
+-->
+<script src="js/nicEdit.js"></script>
 
 <!-- init page after everything is done -->
 <script src="js/gui-index.js" type="text/javascript" ></script>
 
-<script type="text/javascript" >
-$(document).ready(function() {
-	$('#prefix').markItUp(mySettings);
-});
-</script>
+<script>
 
+$(document).ready(function() {
+	new nicEditor({iconsPath : 'tpl/js/nicEditorIcons.gif', fullPanel : true})
+		.panelInstance('prefix');
+});
+
+</script>
 </body>
 </html>
