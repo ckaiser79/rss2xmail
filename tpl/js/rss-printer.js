@@ -6,11 +6,21 @@ function RssPrinter() {
 
 	var onItemsReceived = undefined;
 	var setNumEntries = 6;	
+	var cache = false;
 
 	self.loadFeed = function(feedUrl) {
 	
+		
+
 		if(self.onItemsReceived == undefined) { throw "Undefined Target!"; }
-		var feed = new google.feeds.Feed(feedUrl);
+		var feed;
+		if(cache) {
+			feed = new google.feeds.Feed(feedUrl);
+		}
+		else {
+			var cacheKey = new Date().getTime();
+			feed = new google.feeds.Feed(feedUrl + '&cacheKey=' + cacheKey);
+		}
 		feed.setNumEntries(self.setNumEntries);
 
 		feed.load(function(result) {
